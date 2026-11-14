@@ -61,9 +61,16 @@ body:has(.auth-scene, .account-shell) nav[aria-label="Navegación principal"] {
 .account-profile dd { margin-top: 3px; font-weight: 680; }
 @media (max-width: 760px) {
   .account-shell { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
-  .account-sidebar { position: static; height: auto; gap: 12px; padding: 14px 20px; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; }
-  .account-sidebar nav { display: flex; flex-wrap: wrap; }
-  .account-sidebar > button { align-self: center; margin-top: 0; }
+  .account-sidebar { position: static; height: auto; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; padding: 12px 16px; align-items: center; }
+  .account-sidebar .auth-brand { font-size: 1.1rem; gap: 8px; }
+  .account-sidebar nav { grid-row: 2; grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .account-sidebar nav a { min-height: 44px; justify-content: center; padding: 8px; font-size: .9rem; }
+  .account-sidebar > button { grid-row: 1; grid-column: 2; min-height: 44px; margin: 0; }
+  .account-header { padding: 13px 16px; }
+  .account-inner { gap: 16px; padding: 16px; }
+  .account-welcome { padding: clamp(22px, 6vw, 40px); background-position: 68% center; }
+  .account-profile-body { display: grid; gap: 16px; }
+  .account-avatar { width: 64px; height: 64px; }
 }
 
 .auth-scene {
@@ -162,7 +169,22 @@ body:has(.auth-scene, .account-shell) nav[aria-label="Navegación principal"] {
 .auth-card :is(a, button):focus-visible { outline: 2px solid #197849; outline-offset: 3px; }
 
 @media (max-width: 760px) {
-  .auth-scene { grid-template-columns: minmax(0, 1fr); align-content: center; padding: 32px 5%; }
+  .auth-scene {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: center;
+    gap: 20px;
+    padding: 24px clamp(14px, 5vw, 38px);
+    background-position: center, 67% center;
+  }
   .auth-intro, .auth-card { width: 100%; max-width: 560px; justify-self: center; }
-  .auth-intro h1 { margin: 18px 0 12px; }
+  .auth-intro .auth-brand { font-size: 1.1rem; }
+  .auth-intro h1 { max-width: 18ch; margin: 12px 0 6px; font-size: clamp(1.8rem, 6vw, 2.65rem); }
+  .auth-intro p:last-child { font-size: .95rem; }
+  .auth-card { padding: clamp(17px, 5vw, 30px); }
+  .auth-subtitle { margin-bottom: 12px; }
+  .auth-field { grid-template-columns: 1.75rem minmax(0, 1fr); gap: .3rem; }
+  .auth-field input, .auth-primary { min-height: 48px; }
+  .auth-visibility { right: 0; min-width: 44px; min-height: 44px; display: grid; place-items: center; }
+  .auth-provider { flex-basis: 100px; min-height: 44px; }
+  .auth-register button { min-height: 44px; }
 }
