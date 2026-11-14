@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MyAuthApp",
+  title: "Umbral",
   description: "Inicio de sesión y perfil de cuenta",
 };
 
@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         <Provider>
           <nav aria-label="Navegación principal" className="bg-black text-white shadow-sm">
             <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
-              <Link href="/" className="text-xl font-semibold">MyAuthApp</Link>
+              <Link href="/" className="text-xl font-semibold">UMBRAL</Link>
               <ul className="flex flex-wrap items-center gap-4 text-sm sm:gap-6">
                 <li><Link href="/dashboard" className="hover:text-gray-300">Dashboard</Link></li>
                 {session?.user && (

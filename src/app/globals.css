@@ -24,3 +24,145 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+body:has(.auth-scene, .account-shell) nav[aria-label="Navegación principal"] {
+  display: none;
+}
+
+.account-shell { min-height: 100dvh; display: grid; grid-template-columns: 236px minmax(0, 1fr); background: #f1f6f5; color: #12354a; font-family: var(--font-geist-sans), sans-serif; }
+.account-sidebar { position: sticky; top: 0; height: 100dvh; display: flex; flex-direction: column; gap: 36px; padding: 28px 22px; color: #eff9f5; background: linear-gradient(175deg, #0b2c40, #103f4a); }
+.account-logo { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid #ffc40045; border-radius: 12px; background: #ffc40015; }
+.account-sidebar nav { display: grid; gap: 8px; }
+.account-sidebar nav a { display: flex; gap: 12px; align-items: center; padding: 12px; border-radius: 8px; font-weight: 600; background: #ffffff0b; }
+.account-sidebar nav a:hover { background: #ffffff20; }
+.account-shell:not(:has(#perfil:target)) .account-sidebar nav a[href="#panel"],
+.account-shell:has(#perfil:target) .account-sidebar nav a[href="#perfil"] { color: #fff; background: #286053; box-shadow: inset 3px 0 #86d3ab; }
+.account-sidebar > button { align-self: flex-start; margin-top: auto; }
+.account-shell :is(a, button):focus-visible { outline: 2px solid #f2ba32; outline-offset: 3px; }
+.account-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 19px clamp(20px, 4vw, 56px); border-bottom: 1px solid #dce8e6; background: white; font-weight: 650; }
+.account-header span { display: inline-flex; gap: 8px; align-items: center; border-radius: 999px; padding: 6px 12px; color: #176240; background: #e9f6ef; font-size: .86rem; }
+.account-inner { max-width: 1150px; margin: auto; padding: clamp(20px, 4vw, 56px); display: grid; gap: 24px; overflow-wrap: anywhere; }
+.account-welcome { padding: clamp(28px, 5vw, 58px); border: 1px solid #1c5c5d; border-radius: 22px; color: white; background: linear-gradient(100deg, #0c344a 5%, #0c4652db 52%, #15644e70), url("/office-campus.webp") right 48% / cover; box-shadow: 0 14px 32px #12354a1c; }
+.account-welcome h1 { max-width: 22ch; font-size: clamp(1.8rem, 4vw, 3.4rem); line-height: 1.08; font-weight: 750; letter-spacing: -.04em; }
+.account-welcome p { margin-top: 14px; color: #e5f1ef; }
+.account-jump { display: inline-flex; align-items: center; gap: 10px; margin-top: 24px; padding: 10px 14px; border: 1px solid #ffffff80; border-radius: 9px; background: #10384b; font-size: .9rem; font-weight: 650; }
+.account-jump:hover { background: #1d5360; }
+.account-profile { scroll-margin-top: 16px; border: 1px solid #dce8e6; border-radius: 18px; padding: clamp(20px, 4vw, 36px); background: white; box-shadow: 0 8px 24px #12354a09; }
+.account-profile:target { border-color: #197849; }
+.account-profile-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; border-bottom: 1px solid #e5eeeb; padding-bottom: 18px; }
+.account-profile-heading > span { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: #e9f6ef; color: #176240; }
+.account-profile h2 { font-size: 1.4rem; font-weight: 740; }
+.account-profile-body { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; }
+.account-avatar { border-radius: 50%; width: 88px; height: 88px; object-fit: cover; }
+.account-avatar-placeholder { display: grid; place-items: center; background: #e2f2ea; color: #197849; font-size: 1.75rem; }
+.account-profile dl { display: grid; flex: 1 1 240px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 16px; }
+.account-profile dl > div { min-width: 0; padding: 12px 15px; border: 1px solid #e5eeeb; border-radius: 10px; background: #f7faf9; }
+.account-profile dt { display: flex; align-items: center; gap: 8px; font-size: .85rem; color: #526c7f; }
+.account-profile dd { margin-top: 3px; font-weight: 680; }
+@media (max-width: 760px) {
+  .account-shell { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
+  .account-sidebar { position: static; height: auto; gap: 12px; padding: 14px 20px; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+  .account-sidebar nav { display: flex; flex-wrap: wrap; }
+  .account-sidebar > button { align-self: center; margin-top: 0; }
+}
+
+.auth-scene {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(28px, 4.5vw, 72px);
+  align-items: center;
+  padding: 48px 5.5%;
+  background: linear-gradient(128deg, #092f49f2, #06434bc2 50%, #07503aa8),
+    #0b414a url("/office-campus.webp") center / cover no-repeat;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+.auth-intro {
+  color: white;
+  overflow-wrap: anywhere;
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+
+.auth-brand svg { color: #ffc400; }
+
+.auth-intro h1 {
+  max-width: 10em;
+  margin: 36px 0 22px;
+  font-size: clamp(2.6rem, 4.25vw, 4.2rem);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -.04em;
+}
+
+.auth-intro p:last-child { max-width: 31rem; font-size: clamp(1rem, 1.6vw, 1.32rem); }
+
+.auth-card {
+  width: 100%;
+  max-width: 600px;
+  justify-self: center;
+  border-radius: 18px;
+  background: #fff;
+  color: #0d3450;
+  padding: clamp(26px, 3.4vw, 46px);
+  box-shadow: 0 16px 50px #09263828;
+}
+
+.auth-card h2 { text-align: center; font-size: clamp(1.7rem, 2.35vw, 2rem); font-weight: 800; }
+.auth-subtitle { margin: 3px 0 24px; color: #526c7f; text-align: center; }
+
+.auth-field {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  align-items: center;
+  gap: .5rem;
+}
+
+.auth-field > svg { justify-self: center; color: #0e344a; font-size: 1.35rem; }
+.auth-field input {
+  width: 100%;
+  min-height: 56px;
+  border-bottom: 1px solid #97a3aa;
+  padding: .75rem .2rem;
+  font-size: 1rem;
+}
+.auth-field input::placeholder { color: #607485; }
+.auth-field input:focus { outline: none; border-color: #197849; box-shadow: 0 1px #197849; }
+.auth-field input[name="password"] { padding-right: 2.5rem; }
+.auth-visibility { position: absolute; right: 4px; padding: .5rem; color: #587183; }
+
+.auth-primary {
+  min-height: 60px;
+  padding: .85rem 1rem;
+  border-radius: 8px;
+  background: #197849;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.auth-primary:hover { background: #12623b; }
+.auth-primary:disabled { opacity: .7; }
+.auth-divider { display: flex; align-items: center; gap: 12px; margin: 16px 0 10px; color: #526c7f; font-size: .82rem; }
+.auth-divider::before, .auth-divider::after { content: ""; flex: 1; height: 1px; background: #dbe4e8; }
+.auth-providers { display: flex; flex-wrap: wrap; gap: 10px; }
+.auth-provider { display: flex; flex: 1 1 120px; align-items: center; justify-content: center; gap: .6rem; border: 1px solid #cfdae0; border-radius: 8px; padding: .65rem; font-weight: 650; }
+.auth-provider:hover { background: #eef6f2; }
+.auth-register { margin-top: 19px; text-align: center; color: #526c7f; }
+.auth-register button { color: #126b42; font-weight: 700; }
+.auth-register button:hover { text-decoration: underline; }
+.auth-card :is(a, button):focus-visible { outline: 2px solid #197849; outline-offset: 3px; }
+
+@media (max-width: 760px) {
+  .auth-scene { grid-template-columns: minmax(0, 1fr); align-content: center; padding: 32px 5%; }
+  .auth-intro, .auth-card { width: 100%; max-width: 560px; justify-self: center; }
+  .auth-intro h1 { margin: 18px 0 12px; }
+}
